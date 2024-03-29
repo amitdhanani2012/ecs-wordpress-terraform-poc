@@ -1,10 +1,12 @@
 
 variable "aws_access_key" {
   description = "AWS access key"
+
 }
 
 variable "aws_secret_key" {
   description = "AWS secret key"
+ 
 }
 
 variable "vpc_cidr_block" {
@@ -26,7 +28,7 @@ variable "private_subnet_cidr_block" {
 
 variable "region" {
   description = "AWS Region"
-
+  default     = "us-west-2"
 }
 
 variable "availability_zones" {
@@ -76,17 +78,17 @@ variable "wp_password" {
 
 variable "wp_mail" {
   description = "Wordpress email"
- 
 }
 
 variable "accountid" {
   description = "Your AWS Account ID without hyphen"
-
 }
 
 variable "s3bucket" {
   description = "Your AWS s3 bucket name to offload wp media"
+  default     = "s3-upload-test-amit-123"
 }
+
 
 
 
