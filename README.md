@@ -11,15 +11,14 @@
 
 6. ECS container runs in public subnet. We can use private subnet for container using load balancer and for that just need to change ecs.tf .  Load Balancer with Autoscaling is already set in alb.tf
 
-7. When you run "terraform apply" you need to supply "AWS  account id, access key, secret, region and "s3 bucket name to create s3 bucket" " and email address for wordpress.
+7. When you run "terraform apply" you need to supply "AWS  account id, access key, secret, and "s3 bucket name to create s3 bucket" " and email address for wordpress.
 
 
 8. You can change subnet values, s3 bucketnd other password thing in variables.tf
 
 8. After "terraform apply" complete check load balancer dns address from "lb_dns" output and use port 8080 to see wordpress  and wp-admin 
 
-9. For Default password check variables.tf
-
+9. For Default password check variables.tf and also change region,subnet,etc in variable.tf 
  
 
 
