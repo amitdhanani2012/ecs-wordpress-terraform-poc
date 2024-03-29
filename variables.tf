@@ -26,7 +26,7 @@ variable "private_subnet_cidr_block" {
 
 variable "region" {
   description = "AWS Region"
-  default     = "us-west-2"
+
 }
 
 variable "availability_zones" {
