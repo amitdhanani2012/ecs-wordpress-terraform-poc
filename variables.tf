@@ -86,7 +86,7 @@ variable "accountid" {
 
 variable "s3bucket" {
   description = "Your AWS s3 bucket name to offload wp media"
-  default     = "s3-upload-test-amit-123"
+ 
 }
 
 
