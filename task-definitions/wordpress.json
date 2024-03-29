@@ -1,0 +1,85 @@
+[
+    {
+        "name": "wordpress",
+        "image": "amitdhanani/bitmani_wordpress:latest",
+        "cpu": 8192,
+        "memory": 16384,
+	"runtimePlatform": {
+           "operatingSystemFamily": "LINUX"
+         },
+	"taskRoleArn": ["arn:aws:iam::${accountid}:role/s3-rds-cloudwatch-role"],
+        "essential": true,
+        "portMappings": [
+             {
+                 "hostPort": 8080,
+                 "containerPort": 8080,
+                 "protocol": "tcp"
+             }
+         ],
+        "links": [],
+         "healthCheck": {
+              "retries": 5,
+              "command": [
+                  "CMD-SHELL",
+                  "curl -f http://localhost:8080/ || exit 1"
+              ],
+              "timeout": 60,
+              "interval": 300,
+              "startPeriod": 300
+          },
+
+         "environment": [
+          {
+            "name": "WORDPRESS_DATABASE_HOST",
+            "value": "${db_host}"
+          },
+          {
+            "name": "WORDPRESS_DATABASE_USER",
+            "value": "${db_user}"
+          },
+          {
+            "name": "WORDPRESS_DATABASE_PASSWORD",
+            "value": "${db_password}"
+          },
+          {
+            "name": "WORDPRESS_DATABASE_NAME",
+            "value": "${db_name}"
+          },
+          {
+            "name": "WORDPRESS_USERNAME",
+            "value": "${wp_user}"
+          },
+          {
+            "name": "AMIT_S3_BUCKET",
+            "value": "${s3bucket}"
+          },
+          {
+            "name": "AMIT_S3_REGION",
+            "value": "${region}"
+          },
+          {
+            "name": "WORDPRESS_PASSWORD",
+            "value": "${wp_password}"
+          },
+          {
+            "name": "WORDPRESS_EMAIL",
+            "value": "${wp_mail}"
+          }
+        ],
+        "mountPoints": null,
+        "volumesFrom": null,
+        "extraHosts": null,
+        "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+        "awslogs-group": "wordpress",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "streaming",
+        "awslogs-create-group": "true"
+
+	 }
+	},
+	"ulimits": null,
+        "dockerLabels": null
+    }
+]
