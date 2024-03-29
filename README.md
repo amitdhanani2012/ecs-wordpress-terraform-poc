@@ -7,7 +7,7 @@
 
 4. RDS is under private subnet. multi az disable for now but can enable it
 
-5. ECS container amitdhanani/bitnami_wordpress:latest is my custom image more info at https://github.com/amitdhanani2012/amitdhanani_bitnami_wordpress.git This container image is made from bitnami/wordpress image, I did not use persistent storage for this POC but used container file /download-extra.sh to install s3-uploads wp offload plugin.  We can use /download-extra.sh for any plugin install during container start instead persistent storage, rest depends on plugin type.
+5. ECS container amitdhanani/bitnami_wordpress:latest is my custom image more info in folder "amitdhanani_bitnami_wordpress" This container image is made from bitnami/wordpress image, I did not use persistent storage for this POC but used container file /download-extra.sh to install s3-uploads wp offload plugin.  We can use /download-extra.sh for any plugin install during container start instead persistent storage, rest depends on plugin type.
 
 6. ECS container runs in public subnet. We can use private subnet for container using load balancer and for that just need to change ecs.tf .  Load Balancer with Autoscaling is already set in alb.tf
 
